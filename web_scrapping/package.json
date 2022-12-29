@@ -1,0 +1,17 @@
+{
+  "name": "web_scrapping",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jsdom": "^20.0.3",
+    "write-excel-file": "^1.4.17",
+    "xlsx": "^0.18.5"
+  }
+}
