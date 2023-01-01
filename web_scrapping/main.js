@@ -5,16 +5,16 @@ const XLSX = require('xlsx');
 // Control de flujo iterativo para obtener de la temporada 2012_2013 hasta 2021_2022
 // temporadas = ['2012_2013', '2013_2014', '2014_2015', '2015_2016', '2016_2017', '2017_2018', '2018_2019', '2019_2020', '2020_2021', '2021_2022'];
 temporada = '2022-2023';
+// league for web scraping
+liga = 'calcio'
 
-console.log("Extrayendo información de temporada" + temporada);
+console.log("Extrayendo información de temporada " + temporada);
 (async () => {
-    // let cadena = 'https://www.sport.es/es/resultados/la-liga/jornada-'
-    // let cadena = 'https://www.sport.es/es/resultados/premier-league/jornada-'
-    // let cadena = 'https://www.sport.es/es/resultados/2012-2013/la-liga/calendario/'
-    // let cadena = 'https://www.sport.es/es/resultados/2021-2022/premier-league/jornada-'
-    // let cadena = 'https://www.sport.es/es/resultados/' + temporada + '/premier-league/jornada-'
-    let cadena = 'https://www.sport.es/es/resultados/premier-league/jornada-'
-    let cantidadJornadas = 17
+    // URL for the indicated season
+    // let cadena = 'https://www.sport.es/es/resultados/' + temporada + '/' + liga + '/jornada-'
+    // URL for the current season
+    let cadena = 'https://www.sport.es/es/resultados/' + liga +'/jornada-'
+    let cantidadJornadas = 15
     let equipos = []
     let points = []
     let lista = []
@@ -26,7 +26,7 @@ console.log("Extrayendo información de temporada" + temporada);
     for (let i = 0; i < cantidadJornadas; i++) {
         cadena1 = cadena + (i + 1) + '/'
         // console.log(cadena1)
-        console.log("JORNADA # " + i)
+        console.log("JORNADA # " + (i+1))
         try {
             // Abrimos una instancia del puppeteer y accedemos a la url de google
             const browser = await puppeteer.launch();
@@ -121,7 +121,7 @@ console.log("Extrayendo información de temporada" + temporada);
         // Binary string
         XLSX.write(workBook, {bookType: "xlsx", type: "binary"})
 
-        let fileName = "PREMIERLEAGUE_" + temporada + "_J17.xlsx"
+        let fileName = liga + '_' + temporada + "_J15.xlsx"
         XLSX.writeFile(workBook, fileName)
 
     }
